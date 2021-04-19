@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Form, Input, Button } from 'antd';
 
-const FormEdit = ({onEdit = () => {}}) => {
+const FormEdit = ({character, onEdit = () => {}}) => {
+    const [fields, setFields] = useState([])
+
+    useEffect(() => {
+        const fields = ['image', 'name', 'status', 'species'].map(field => ({
+            name: [field],
+            value: character[field],
+        }))
+
+        setFields(fields)
+    }, [])
+
     const handleSubmit = () => {
         onEdit()
     }
     return (
-        <Form name='edit-character' onFinish={handleSubmit}>
+        <Form name='edit-character' fields={fields} onFinish={handleSubmit}>
             <Form.Item
                 name='image'
                 label='Image'

@@ -1,16 +1,31 @@
-import { useHistory } from 'react-router-dom';
-import { Layout } from 'antd';
+import { useEffect } from 'react';
+import { useDispatch,  useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+import { Layout, Spin } from 'antd';
 
 import actions from '../redux/actions/characterActions'
-
+import { fetchCharacter } from '../redux/reducers/characters'
 import FormEdit from '../components/FormEdit'
 import styles from './CharacterPage.module.css'
 
 const { Header, Content } = Layout;
 
-const EditPage = () => {
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
+const EditPage = () => {
+    const character = useSelector(state => state.characters.selected)
+    const dispatch = useDispatch()
+    const query = useQuery()
     const history = useHistory()
+
+    useEffect(() => {
+        if (!character) {
+            const id = query.get('id')
+            dispatch(fetchCharacter(id))
+        }
+    }, [])
 
     const handleEdition = () => {
         history.push('/')
@@ -21,7 +36,7 @@ const EditPage = () => {
                 <h2>Edit Fields</h2>
             </Header>
             <Content className={styles.content}>
-                <FormEdit onEdit={handleEdition}/>
+                <FormEdit character={character} onEdit={handleEdition}/>
             </Content>
         </Layout>
     )

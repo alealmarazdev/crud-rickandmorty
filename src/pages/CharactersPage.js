@@ -3,7 +3,7 @@ import { useHistory} from 'react-router-dom'
 import { Row, Layout } from 'antd';
 
 import CharacterCard from '../components/CharacterCard';
-import { removeCharacter } from '../redux/reducers/characters';
+import { removeCharacter, selectCharacter } from '../redux/reducers/characters';
 
 import 'antd/dist/antd.css';
 import styles from './CharacterPage.module.css'
@@ -16,8 +16,10 @@ const CharacterPage = () => {
   const characters = useSelector(state => state.characters.characters)
 
   const handleEdit = (id) => {
-    history.push(`/edit`)
+    dispatch(selectCharacter(id))
+    history.push(`/edit?id=${id}`)
   }
+
   const handleRemove = (id) => {
     dispatch(removeCharacter(id))
   }
