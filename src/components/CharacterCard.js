@@ -25,12 +25,12 @@ const CharacterCard = ({character, onEdit=() => {}, onRemove=() => {}}) => {
                 />
                 }
                 actions={[
-                <Button type='text' onClick={handleEdition}>
-                    <EditOutlined key='edit' />
-                </Button>,
-                <Button type='text' onClick={deleteCharacter} data-id={id}>
-                    <DeleteOutlined key='delete' />
-                </Button>,
+                    <Button type='text' onClick={handleEdition} data-id={id}>
+                        <EditOutlined key='edit' />
+                    </Button>,
+                    <Button type='text' onClick={deleteCharacter} data-id={id}>
+                        <DeleteOutlined key='delete' />
+                    </Button>,
                 ]}
             >
                 <h2>{name} </h2>

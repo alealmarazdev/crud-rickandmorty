@@ -1,8 +1,7 @@
 import { Form, Input, Button } from 'antd';
 
 const FormEdit = ({onEdit = () => {}}) => {
-    const handleSubmit = (values) => {
-
+    const handleSubmit = () => {
         onEdit()
     }
     return (
