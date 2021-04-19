@@ -3,7 +3,9 @@ import { Row, Layout } from 'antd';
 
 import CharacterCard from '../components/CharacterCard';
 import {removeCharacter} from '../redux/reducers/characters';
-import styles from './CharacterPage.module.css';
+
+import 'antd/dist/antd.css';
+import styles from './CharacterPage.module.css'
 
 const { Header, Content } = Layout;
 

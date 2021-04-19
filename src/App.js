@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import CharactersPage from './pages/CharactersPage'
+import EditPage from './pages/EditPage'
 import store from './redux/createStore';
 import {fetchCharacters} from './redux/reducers/characters'
 
-import 'antd/dist/antd.css';
 import './App.css';
 
 store.dispatch(fetchCharacters)
@@ -16,9 +16,14 @@ function App() {
     <Provider store={store}>
       <div className='App'>
         <Router>
-          <Route exact path='/'>
-            <CharactersPage />
-          </Route>
+        <Switch>
+            <Route exact path='/'>
+              <CharactersPage />
+            </Route>
+            <Route path='/edit'>
+              <EditPage/>
+            </Route>
+          </Switch>
         </Router>
       </div>
     </Provider>
