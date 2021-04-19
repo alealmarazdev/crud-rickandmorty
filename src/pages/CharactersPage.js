@@ -1,13 +1,20 @@
-import { useSelector } from 'react-redux';
-import { Row, Layout } from 'antd'
+import { useSelector, useDispatch } from 'react-redux';
+import { Row, Layout } from 'antd';
 
-import CharacterCard from '../components/CharacterCard'
-import styles from './CharacterPage.module.css'
+import CharacterCard from '../components/CharacterCard';
+import {removeCharacter} from '../redux/reducers/characters';
+import styles from './CharacterPage.module.css';
 
 const { Header, Content } = Layout;
 
 const CharacterPage = () => {
+  const dispatch = useDispatch()
   const characters = useSelector(state => state.characters.characters)
+
+  const handleRemove = (id) => {
+    dispatch(removeCharacter(id))
+  }
+
   return (
     <Layout>
       <Header className={styles.header}>
@@ -16,7 +23,7 @@ const CharacterPage = () => {
       <Content className={styles.content}>
         <Row gutter={[16, 16]} justify='center' align='top'>
           {characters.map((character) => (
-            <CharacterCard key={character.id} character={character}/>
+            <CharacterCard key={character.id} character={character} onRemove={handleRemove}/>
           ))}
         </Row>
       </Content>
