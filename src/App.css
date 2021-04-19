@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.bg-success {
+  background-color: #70C040 !important;
+  border:#5d9f38 !important
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
