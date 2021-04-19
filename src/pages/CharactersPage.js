@@ -1,6 +1,7 @@
 import { Row, Layout } from 'antd'
 
 import styles from './CharacterPage.module.css'
+
 const { Header, Content } = Layout;
 
 const CharacterPage = () => {
