@@ -36,7 +36,8 @@ const EditPage = () => {
                 <h2>Edit Fields</h2>
             </Header>
             <Content className={styles.content}>
-                <FormEdit character={character} onEdit={handleEdition}/>
+                {!character && <Spin tip="Loading..." />}
+                {character && <FormEdit character={character} onEdit={handleEdition}/>}
             </Content>
         </Layout>
     )
