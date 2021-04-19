@@ -1,10 +1,13 @@
-
-import React from 'react';
 import { Button, Card, Col } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-const CharacterCard = ({character, onRemove=() => {}}) => {
+const CharacterCard = ({character, onEdit=() => {}, onRemove=() => {}}) => {
     const { status, name, image, species, id } = character;
+
+    const handleEdition = (ev) => {
+        const id = ev.currentTarget.dataset.id;
+        onEdit(id)
+    }
 
     const deleteCharacter = (ev) => {
         const id = ev.currentTarget.dataset.id;
@@ -22,7 +25,7 @@ const CharacterCard = ({character, onRemove=() => {}}) => {
                 />
                 }
                 actions={[
-                <Button type='text' >
+                <Button type='text' onClick={handleEdition}>
                     <EditOutlined key='edit' />
                 </Button>,
                 <Button type='text' onClick={deleteCharacter} data-id={id}>

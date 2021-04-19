@@ -1,12 +1,15 @@
 import { Form, Input, Button } from 'antd';
 
-const FormEdit = () => {
+const FormEdit = ({onEdit = () => {}}) => {
+    const handleSubmit = (values) => {
 
+        onEdit()
+    }
     return (
-        <Form name="edit-character" >
+        <Form name='edit-character' onFinish={handleSubmit}>
             <Form.Item
-                name="image"
-                label="Image"
+                name='image'
+                label='Image'
                 rules={[
                     {
                         required: true,
@@ -16,8 +19,8 @@ const FormEdit = () => {
                 <Input />
             </Form.Item>
             <Form.Item
-                name="name"
-                label="Name"
+                name='name'
+                label='Name'
                 rules={[
                     {
                         required: true,
@@ -27,8 +30,8 @@ const FormEdit = () => {
                 <Input />
             </Form.Item>
             <Form.Item
-                name="status"
-                label="Status"
+                name='status'
+                label='Status'
                 rules={[
                     {
                         required: true,
@@ -38,8 +41,8 @@ const FormEdit = () => {
                 <Input />
             </Form.Item>
             <Form.Item
-                name="species"
-                label="Species"
+                name='species'
+                label='Species'
                 rules={[
                     {
                         required: true,
@@ -50,9 +53,9 @@ const FormEdit = () => {
             </Form.Item>
             <Form.Item >
                 <Button
-                    type="primary"
+                    type='primary'
                     className='bg-success'
-                    htmlType="submit"
+                    htmlType='submit'
                     style={{ margin: '14px' }}
                 >
                     Submit
