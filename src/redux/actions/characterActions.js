@@ -17,4 +17,8 @@ export default {
     type: actionTypes.SELECT_CHARACTER,
     payload: id
   }),
+  updateCharacter: (character) => ({
+    type: actionTypes.UPDATE_CHARACTER,
+    payload: character
+  }),
 }

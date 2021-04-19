@@ -13,8 +13,12 @@ const FormEdit = ({character, onEdit = () => {}}) => {
         setFields(fields)
     }, [])
 
-    const handleSubmit = () => {
-        onEdit()
+    const handleSubmit = (values) => {
+        const edited = {
+            ...character,
+            ...values
+        }
+        onEdit(edited)
     }
     return (
         <Form name='edit-character' fields={fields} onFinish={handleSubmit}>

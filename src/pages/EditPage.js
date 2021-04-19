@@ -27,7 +27,8 @@ const EditPage = () => {
         }
     }, [])
 
-    const handleEdition = () => {
+    const handleEdition = (edited) => {
+        dispatch(actions.updateCharacter(edited))
         history.push('/')
     }
     return(

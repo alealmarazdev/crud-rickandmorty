@@ -36,6 +36,18 @@ export default (state = initialState, action) => {
                 selected
             }
         }
+        case actionTypes.UPDATE_CHARACTER: {
+            const characters = state.characters.map(character => (character.id == action.payload.id)
+                    ? action.payload
+                    : character
+            )
+
+            return {
+                ...state,
+                characters,
+                selected: initialState.selected
+            }
+        }
         default:
             return state
     }
@@ -60,4 +72,8 @@ export function removeCharacter(id) {
 
 export function selectCharacter(id) {
     return (dispatch, getState) => dispatch(actions.selectCharacter(id))
+}
+
+export function updateCharacter(character) {
+    return (dispatch, getState) => dispatch(actions.updateCharacter(character))
 }
